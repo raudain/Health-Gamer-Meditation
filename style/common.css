@@ -57,7 +57,7 @@ body {
   width: 210px;
 }
 
-a {
+.video-title {
   display: -webkit-box;
 	max-height: 1.6rem;
 	-webkit-box-orient: vertical;
@@ -73,22 +73,30 @@ a {
 }
 
 ytd-thumbnail {
-    display: inline-block;
-    position: relative;
-    -ms-flex: none;
-    -webkit-flex: none;
-    flex: none;
+  display: inline-block;
+  position: relative;
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
 }
 
 ytd-thumbnail.ytd-grid-video-renderer {
-    height: 118px;
-    width: 210px;
+  height: 118px;
+  width: 210px;
 }
 
 ytd-thumbnail #thumbnail.ytd-thumbnail {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+a img {
+	width: 20vh;
+}
+
+.video {
+	float: left;
 }
