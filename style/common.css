@@ -32,12 +32,12 @@ body {
 #channel-container img {
 	width: 8vh;
 	padding-top: 1%;
+	margin-right: 1%;
 }
 
 #channel-header div {
-	font-weight: 400;
 	line-height: 3rem;
-	font-size: 2.4rem;
+	font-size: 1.5rem;
 	padding-top: 2%;
 }
 
@@ -52,45 +52,17 @@ body {
 	padding-top: 3%;
 }
 
-.thumbnail {
-	height: 118px;
-  width: 210px;
-}
-
 .video-title {
   display: -webkit-box;
-	max-height: 1.6rem;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
   -webkit-line-clamp: 2;
-	font-size: 1.4rem;
 	font-weight: 500;
 	line-height: 1.6rem;
 	letter-spacing: normal;
 	text-decoration: none;
-}
-
-ytd-thumbnail {
-  display: inline-block;
-  position: relative;
-  -ms-flex: none;
-  -webkit-flex: none;
-  flex: none;
-}
-
-ytd-thumbnail.ytd-grid-video-renderer {
-  height: 118px;
-  width: 210px;
-}
-
-ytd-thumbnail #thumbnail.ytd-thumbnail {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 
 a img {
@@ -98,5 +70,7 @@ a img {
 }
 
 .video {
+  width: 15%;
 	float: left;
+	margin-right: .1%;
 }
