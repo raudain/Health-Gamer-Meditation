@@ -14,8 +14,8 @@ body {
 	background-color: rgba(24, 24, 24, 1);
 }
 
-#channel-header, #videos {
-	padding-left: 30%;
+#banner img, #channel-header, #videos {
+	padding-left: 26%;
 }
 
 #channel-header * {
@@ -24,8 +24,6 @@ body {
 
 #banner img {
 	width: 40vw;
-	margin: auto;
-	display: block;
 	padding-top: 5%;
 }
 
@@ -43,12 +41,16 @@ body {
 
 #channel-header div, a {
 	color: white;
-	font-family: Roboto, Arial, sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 #videos-container {
   height: 60vh;
-  background-color: black;
+  background-color: rgb(15, 15, 15);
+}
+
+#videos {
+	width: 50%;
 	padding-top: 3%;
 }
 
@@ -66,11 +68,19 @@ body {
 }
 
 a img {
-	width: 20vh;
+	width: 100%;
 }
 
 .video {
-  width: 15%;
+  width: 16%;
 	float: left;
-	margin-right: .1%;
+	margin-right: .5%;
+	margin-bottom: 1.5%;
+}
+
+@media screen and (max-width: 1500px) {
+
+	.video {
+	  width: 18%;
+	}
 }
