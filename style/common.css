@@ -41,6 +41,9 @@ body {
 
 #channel-header div, a {
 	color: white;
+}
+
+#channel-header div, span, a {
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -51,7 +54,17 @@ body {
 
 #videos {
 	width: 50%;
+	height: 90%;
 	padding-top: 3%;
+}
+
+span {
+	height: 65%;
+  background-color: white;
+	text-align: center;
+	display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .video-title {
@@ -73,6 +86,7 @@ a img {
 
 .video {
   width: 16%;
+	height: 25%;
 	float: left;
 	margin-right: .5%;
 	margin-bottom: 1.5%;
