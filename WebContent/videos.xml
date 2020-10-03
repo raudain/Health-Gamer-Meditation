@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<videoList title="videos">
+	<video>
+		<link>https://www.youtube.com/watch?v=1gz4duPT5CY&amp;t=1h17m40s</link>
+		<source>images/thumbnail/connoreatspants.webp</source>
+		<caption>Overcoming NEGATIVE Self-Talk with ConnorEatsPants | Dr. K Interviews</caption>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=EQP5O_mbJho&amp;t=119m40s</link>
+		<source>images/thumbnail/train2.webp</source>
+		<caption>MAKING SENSE With TrainwrecksTV | Dr. K Interviews</caption>
+	</video>
+	<video>
+		<link>http://www.youtube.com/watch?v=sLbDESxRuLI&amp;t=113m55s</link>
+		<source>images/thumbnail/toxicityinleagueoflegends.webp</source>
+		<caption>Dr. K Discusses TOXICITY With LoL Pros (ft. Voyboy, Shiphtur, Sanchovies, SirhcEz)</caption>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=sn4ic7ftesw&amp;t=104m23s</link>
+		<source>images/thumbnail/moistcr1tikal.webp</source>
+		<caption>Talking With penguinz0 | Dr. K Interviews</caption>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=7-23_WfZ4Lk&amp;t=89m24s</link>
+		<source>images/thumbnail/incel.webp</source>
+		<caption>Talking With an Actual Incel? | Dr. K Interviews</caption>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=IIPTN0qdFVU&amp;t=104m4s</link>
+		<source>images/thumbnail/datingcoaches.webp</source>
+		<caption>Pickup Artistry, Dating, &amp; Building Confidence | Dr. K Interviews</caption>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=COlSfNEsPZA&amp;t=110m0s</link>
+		<source>images/thumbnail/councilcontroversy.webp</source>
+		<caption>Talking with FerociouslySteph, Controversy &amp; Identity</caption>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=zn8vtW7Vaz4&amp;t=110m8s</link>
+		<source>images/thumbnail/train.webp</source>
+		<caption>Talking with @Trainwreckstv: Staying Grounded and Focused</caption>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=zM-J9_ddpDA</link>
+		<source>images/thumbnail/ban.webp</source>
+		<caption>Wrongly BANNED from a Mental Health Discord?</caption>
+	</video>
+</videoList>

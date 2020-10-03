@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WebContent"
+    "\\WebContent",
+    "\\WebContent\\Drop",
+    "\\WebContent\\Drop\\src"
   ],
-  "SelectedNode": "\\WebContent\\meditation.html",
+  "SelectedNode": "\\WebContent\\videos.xml",
   "PreviewInSolutionExplorer": false
 }
