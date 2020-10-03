@@ -10,10 +10,10 @@ body {
 }
 
 #banner img, #channel-header, #videos {
-	padding-left: 26%;
+	margin-left: 26%;
 }
 
-#links-holder, #links-holder a {
+#links-holder, #links-holder a, #channel-container, span {
 	display: flex;
 }
 
@@ -26,8 +26,11 @@ body {
     justify-content: flex-end;
 }
 
-#links-holder a {
+#links-holder a, #channel-container, span {
     align-items: center;
+}
+
+#links-holder a {
     padding: 10px;
     font-size: 11px;
     font-weight: 700;
@@ -44,8 +47,6 @@ body {
 #channel-container {
 	height: 12vh;
 	background-color: rgba(24, 24, 24, 1);
-	display: flex;
-	align-items: center;
 }
 
 #channel-header {
@@ -57,7 +58,7 @@ body {
 }
 
 #banner img {
-	width: 40vw;
+	width: 45vw;
 	margin-top: 7%;
 }
 
@@ -86,17 +87,16 @@ body {
 }
 
 #videos {
-	width: 210px;
-	height: 184px;
+	width: 55%;
+	height: 90%;
 	padding-top: 3%;
 }
 
-span {
+#new {
 	height: 65%;
+	color: black;
 	background-color: white;
 	text-align: center;
-	display: flex;
-	align-items: center;
 	justify-content: center;
 }
 
@@ -118,16 +118,26 @@ a img {
 }
 
 .video {
-	width: 16%;
-	height: 25%;
+	height: 184px;
+	width: 210px;
 	float: left;
 	margin-right: .5%;
 	margin-bottom: 1.5%;
 }
 
+span {
+	color: rgb(170, 170, 170);
+}
+
 @media screen and (max-width: 1500px) {
 	
-	.video {
-		width: 18%;
+	#channel-header {
+		margin-left: 10%;
+	}
+	
+	#videos {
+		width: 90%;
+		margin-left: 5%;
+		padding-top: 6%;
 	}
 }

@@ -36,5 +36,18 @@ function myfunction(xml) {
 		captionLink.setAttribute("href", xmlLink);
 		captionLink.innerHTML = xmlCaption;
 		videoElement.appendChild(captionLink);
+		
+		const timeElement = document.createElement("span");
+		const videoMonth = xmlVideo.getElementsByTagName("month")[0].childNodes[0].nodeValue;
+		const videoDay = xmlVideo.getElementsByTagName("day")[0].childNodes[0].nodeValue;
+		const date = new Date();
+		const thisMonth = date.getMonth();
+		const thisDay = date.getMonth();
+		let dayDifference;
+		if (thisMonth - videoMonth < 2) {
+			dayDifference = thisDay - videoDay;
+		}
+		timeElement.innerHTML = dayDifference;
+		videoElement.appendChild(timeElement);
 	}
 }

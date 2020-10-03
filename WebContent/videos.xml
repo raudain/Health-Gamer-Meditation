@@ -1,48 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <videoList title="videos">
 	<video>
+		<link>https://www.youtube.com/watch?v=3V8VJxYHlRA</link>
+		<source>images/thumbnail/insecure.webp</source>
+		<caption>Psychiatrist Explains How Insecure People Use the Internet</caption>
+		<date>
+			<month>9</month>
+			<day>30</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=t-jNwBNXeJY</link>
+		<source>images/thumbnail/grossgore.webp</source>
+		<caption>How Insecurity Breeds Materialism: A Talk With Gross Gore | Dr. K Interviews</caption>
+		<date>
+			<month>9</month>
+			<day>29</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=_lRLZYri3Zo</link>
+		<source>images/thumbnail/hotshotgg.webp</source>
+		<caption>The Power of "I'm Sorry' With HotshotGG | Dr. K Interviews</caption>
+		<date>
+			<month>9</month>
+			<day>26</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=cXw8cJolE5Y</link>
+		<source>images/thumbnail/mask.webp</source>
+		<caption>The more successful your mask, the lonelier you feel</caption>
+		<date>
+			<month>9</month>
+			<day>26</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=f80giMf-tKM</link>
+		<source>images/thumbnail/mentalhealth.webp</source>
+		<caption>Mental Health Isn’t Broken, It’s Incomplete</caption>
+		<date>
+			<month>9</month>
+			<day>26</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=bbQnnAbWBfE&amp;t=1h19m7s</link>
+		<source>images/thumbnail/loneliness.webp</source>
+		<caption>LONELINESS: The Danger of Social Isolation | Dr. K Interviews</caption>
+		<date>
+			<month>9</month>
+			<day>26</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=yGJXaXxGamY&amp;t=1h39m12s</link>
+		<source>images/thumbnail/pestily.webp</source>
+		<caption>How to Turn Ideas into Action Ft. Pestily  | Dr. K Interviews</caption>
+		<date>
+			<month>9</month>
+			<day>19</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=5n6lDNacfk0&amp;t=1h38m4s</link>
+		<source>images/thumbnail/poopernoodle.webp</source>
+		<caption>Conquering SOCIAL ANXIETY ft. Poopernoodle | Dr. K Interviews</caption>
+		<date>
+			<month>9</month>
+			<day>19</day>
+		</date>
+	</video>
+	<video>
+		<link>https://www.youtube.com/watch?v=QSR3P9jayPo</link>
+		<source>images/thumbnail/smash.webp</source>
+		<caption>MOVING FORWARD With the Smash Community (ft. Scar, TKbreezy, Hugs, Jisu, DrPiggy)</caption>
+		<date>
+			<month>9</month>
+			<day>12</day>
+		</date>
+	</video>
+	<video>
 		<link>https://www.youtube.com/watch?v=1gz4duPT5CY&amp;t=1h17m40s</link>
 		<source>images/thumbnail/connoreatspants.webp</source>
 		<caption>Overcoming NEGATIVE Self-Talk with ConnorEatsPants | Dr. K Interviews</caption>
+		<date>
+			<month>9</month>
+			<day>12</day>
+		</date>
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=EQP5O_mbJho&amp;t=119m40s</link>
 		<source>images/thumbnail/train2.webp</source>
 		<caption>MAKING SENSE With TrainwrecksTV | Dr. K Interviews</caption>
+		<date>
+			<month>9</month>
+			<day>12</day>
+		</date>
 	</video>
 	<video>
 		<link>http://www.youtube.com/watch?v=sLbDESxRuLI&amp;t=113m55s</link>
 		<source>images/thumbnail/toxicityinleagueoflegends.webp</source>
 		<caption>Dr. K Discusses TOXICITY With LoL Pros (ft. Voyboy, Shiphtur, Sanchovies, SirhcEz)</caption>
+		<date>
+			<month>9</month>
+			<day>5</day>
+		</date>
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=sn4ic7ftesw&amp;t=104m23s</link>
 		<source>images/thumbnail/moistcr1tikal.webp</source>
 		<caption>Talking With penguinz0 | Dr. K Interviews</caption>
+		<date>
+			<month>8</month>
+			<day>29</day>
+		</date>
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=7-23_WfZ4Lk&amp;t=89m24s</link>
 		<source>images/thumbnail/incel.webp</source>
 		<caption>Talking With an Actual Incel? | Dr. K Interviews</caption>
+		<date>
+			<month>8</month>
+			<day>29</day>
+		</date>
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=IIPTN0qdFVU&amp;t=104m4s</link>
 		<source>images/thumbnail/datingcoaches.webp</source>
 		<caption>Pickup Artistry, Dating, &amp; Building Confidence | Dr. K Interviews</caption>
+		<date>
+			<month>8</month>
+			<day>29</day>
+		</date>
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=COlSfNEsPZA&amp;t=110m0s</link>
 		<source>images/thumbnail/councilcontroversy.webp</source>
 		<caption>Talking with FerociouslySteph, Controversy &amp; Identity</caption>
+		<date>
+			<month>8</month>
+			<day>29</day>
+		</date>
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=zn8vtW7Vaz4&amp;t=110m8s</link>
 		<source>images/thumbnail/train.webp</source>
 		<caption>Talking with @Trainwreckstv: Staying Grounded and Focused</caption>
+		<date>
+			<month>8</month>
+			<day>29</day>
+		</date>
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=zM-J9_ddpDA</link>
 		<source>images/thumbnail/ban.webp</source>
 		<caption>Wrongly BANNED from a Mental Health Discord?</caption>
+		<date>
+			<month>8</month>
+			<day>29</day>
+		</date>
 	</video>
 </videoList>
