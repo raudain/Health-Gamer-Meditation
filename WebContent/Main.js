@@ -1,27 +1,5 @@
-// Pane
-const paneElement = document.getElementById("pane");
-paneElement.addEventListener("click", returnFromOverlay);
-const bannerElement = document.getElementById("banner");
-document.body.insertBefore(paneElement, bannerElement);
+// Existing videos
 
-const newElement = document.getElementById("new");
-const buttonElement = document.getElementsByTagName("button")[0];
-newElement.addEventListener("click", e => {
-    buttonElement.click();
-});
-
-function returnFromOverlay() {
-	//appSwitcher.style.display = "none";
-	pane.style.backgroundColor = "";
-	pane.style.zIndex = -1;
-	var workerOverlay = document.getElementById("worker-overlay");
-	if (workerOverlay != null) {
-		workerOverlay.style.display = "none";
-	}
-}
-
-
-// Videos
 const xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
@@ -30,11 +8,6 @@ xhttp.onreadystatechange = function () {
 };
 xhttp.open("GET", "videos.xml", true);
 xhttp.send();
-
-function addVideo() {
-	paneElement.style.zIndex = 2;
-	paneElement.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-}
 
 function displayVideos(xml) {
 	const xmlDoc = xml.responseXML;
@@ -93,4 +66,28 @@ function displayVideos(xml) {
 		timeElement.innerHTML = time;
 		detailElement.appendChild(timeElement);
 	}
+}
+
+
+// New video
+
+const newElement = document.getElementById("place-holder");
+const buttonElement = document.getElementsByTagName("button")[0];
+newElement.addEventListener("click", e => {
+    buttonElement.click();
+});
+
+const overlayElement = document.getElementById("overlay");
+const overlayBackground = document.getElementById("overlay-background");
+overlayBackground.addEventListener("click", returnFromOverlay);
+
+function addVideo() {
+	overlayBackground.style.display = "block";
+	overlayElement.style.display = "block";
+}
+
+
+function returnFromOverlay() {
+	overlayBackground.style.display = "none";
+	overlayElement.style.display = "none";
 }

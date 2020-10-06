@@ -9,13 +9,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="images/controller.png">
 	<title>HealthyGamerGG</title>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-	<div id="pane"></div>
 	<div id="banner">
 		<img src="images/banner.png">
 		<div id="links-holder">
@@ -46,12 +44,79 @@
 	<div id="video-container">
 		<div id="videos">
 			<div class="video">
-				<span id="new">Add Video</span>
-				<button type="button" onclick="addVideo()"></button>
+				<div id="place-holder">
+					<svg id="yt-icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block;">
+						<g class="style-scope yt-icon">
+        					<path d="M19,4H5A2.15,2.15,0,0,0,3,6V18a2.15,2.15,0,0,0,2,2H19a2.15,2.15,0,0,0,2-2V6A2.15,2.15,0,0,0,19,4ZM5,18H19V6H5Z" fill="#6f6f6f" fill-rule="evenodd" class="style-scope yt-icon"></path>
+        					<path d="M15,12,10,8v8Z" fill="#f80000" fill-rule="evenodd" class="style-scope yt-icon"></path>
+      					</g>
+      				</svg>
+					<span>Upload video</span>
+					<button type="button" onclick="addVideo()"></button>
+				</div>
 			</div>
 		</div>
 	</div>
 
+	<div id="overlay-background"></div>
+	
+	<div id="overlay">
+		<div id="header">
+			<div>Add video</div>
+			<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope iron-icon">
+				<g class="style-scope iron-icon">
+					<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="style-scope iron-icon"></path>
+				</g>
+			</svg>
+		</div>
+		<div id="file-picker">
+			<div id="circle">
+				<div id="arrow-group" class="style-scope ytcp-uploads-file-picker-animation">
+					<div id="arrow" class="style-scope ytcp-uploads-file-picker-animation">
+						<div id="arrow-tip" class="style-scope ytcp-uploads-file-picker-animation"></div>
+						<div id="smoke" class="style-scope ytcp-uploads-file-picker-animation"></div>
+						<div id="arrow-line" class="style-scope ytcp-uploads-file-picker-animation"></div>
+					</div>
+					<div id="arrow-underline" class="style-scope ytcp-uploads-file-picker-animation"></div>
+				</div>
+			</div>
+			<p>Drag and drop thumbnail file to upload</p>
+    		<div id="select-file-button">
+    			<div>Select files</div>
+    		</div>
+			<form action="update.htm">
+				<input type="hidden" name="room" value="${worker.getRoom()}" />
+				<table>
+					<tr>
+						<th>Name:</th>
+						<td><input type="text" name="workername"
+							value="${worker.getName()}"></td>
+					</tr>
+					<tr>
+						<th>Profession:</th>
+						<td><input type="text" name="profession"
+							value="${worker.getProfession()}"></td>
+					</tr>
+					<tr>
+						<th>Endurance:</th>
+						<td><input type="text" name="endurance"
+							value="${worker.getEndurance()}"></td>
+					</tr>
+					<tr>
+						<th>Level:</th>
+						<td><input type="text" name="level"
+							value="${worker.getLevel()}"></td>
+					</tr>
+					<tr>
+						<th>Cost:</th>
+						<td><input type="text" name="cost"
+							value="${worker.getCost()}"></td>
+					</tr>
+				</table>
+				<input id="save" type="submit" value="Save">
+			</form>
+		</div>
+	</div>
 	<script src="Main.js"></script>
 
 </body>
