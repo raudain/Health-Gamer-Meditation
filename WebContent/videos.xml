@@ -2,7 +2,7 @@
 <videoList title="videos">
 	<video>
 		<link>https://www.youtube.com/watch?v=3V8VJxYHlRA</link>
-		<source>images/thumbnail/insecure.webp</source>
+		<thumbnail>insecure.webp</thumbnail>
 		<caption>Psychiatrist Explains How Insecure People Use the Internet</caption>
 		<date>
 			<year>2020</year>
@@ -12,7 +12,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=t-jNwBNXeJY</link>
-		<source>images/thumbnail/grossgore.webp</source>
+		<thumbnail>grossgore.webp</thumbnail>
 		<caption>How Insecurity Breeds Materialism: A Talk With Gross Gore | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -22,7 +22,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=_lRLZYri3Zo</link>
-		<source>images/thumbnail/hotshotgg.webp</source>
+		<thumbnail>hotshotgg.webp</thumbnail>
 		<caption>The Power of "I'm Sorry' With HotshotGG | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -32,7 +32,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=cXw8cJolE5Y</link>
-		<source>images/thumbnail/mask.webp</source>
+		<thumbnail>mask.webp</thumbnail>
 		<caption>The more successful your mask, the lonelier you feel</caption>
 		<date>
 			<year>2020</year>
@@ -42,7 +42,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=f80giMf-tKM</link>
-		<source>images/thumbnail/mentalhealth.webp</source>
+		<thumbnail>mentalhealth.webp</thumbnail>
 		<caption>Mental Health Isn’t Broken, It’s Incomplete</caption>
 		<date>
 			<year>2020</year>
@@ -52,7 +52,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=bbQnnAbWBfE&amp;t=1h19m7s</link>
-		<source>images/thumbnail/loneliness.webp</source>
+		<thumbnail>loneliness.webp</thumbnail>
 		<caption>LONELINESS: The Danger of Social Isolation | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -62,7 +62,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=yGJXaXxGamY&amp;t=1h39m12s</link>
-		<source>images/thumbnail/pestily.webp</source>
+		<thumbnail>pestily.webp</thumbnail>
 		<caption>How to Turn Ideas into Action Ft. Pestily  | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -72,7 +72,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=5n6lDNacfk0&amp;t=1h38m4s</link>
-		<source>images/thumbnail/poopernoodle.webp</source>
+		<thumbnail>poopernoodle.webp</thumbnail>
 		<caption>Conquering SOCIAL ANXIETY ft. Poopernoodle | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -82,7 +82,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=QSR3P9jayPo</link>
-		<source>images/thumbnail/smash.webp</source>
+		<thumbnail>smash.webp</thumbnail>
 		<caption>MOVING FORWARD With the Smash Community (ft. Scar, TKbreezy, Hugs, Jisu, DrPiggy)</caption>
 		<date>
 			<year>2020</year>
@@ -92,7 +92,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=1gz4duPT5CY&amp;t=1h17m40s</link>
-		<source>images/thumbnail/connoreatspants.webp</source>
+		<thumbnail>connoreatspants.webp</thumbnail>
 		<caption>Overcoming NEGATIVE Self-Talk with ConnorEatsPants | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -102,7 +102,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=EQP5O_mbJho&amp;t=119m40s</link>
-		<source>images/thumbnail/train2.webp</source>
+		<thumbnail>train2.webp</thumbnail>
 		<caption>MAKING SENSE With TrainwrecksTV | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -112,7 +112,7 @@
 	</video>
 	<video>
 		<link>http://www.youtube.com/watch?v=sLbDESxRuLI&amp;t=113m55s</link>
-		<source>images/thumbnail/toxicityinleagueoflegends.webp</source>
+		<thumbnail>toxicityinleagueoflegends.webp</thumbnail>
 		<caption>Dr. K Discusses TOXICITY With LoL Pros (ft. Voyboy, Shiphtur, Sanchovies, SirhcEz)</caption>
 		<date>
 			<year>2020</year>
@@ -122,7 +122,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=sn4ic7ftesw&amp;t=104m23s</link>
-		<source>images/thumbnail/moistcr1tikal.webp</source>
+		<thumbnail>moistcr1tikal.webp</thumbnail>
 		<caption>Talking With penguinz0 | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -132,7 +132,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=7-23_WfZ4Lk&amp;t=89m24s</link>
-		<source>images/thumbnail/incel.webp</source>
+		<thumbnail>incel.webp</thumbnail>
 		<caption>Talking With an Actual Incel? | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -142,7 +142,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=IIPTN0qdFVU&amp;t=104m4s</link>
-		<source>images/thumbnail/datingcoaches.webp</source>
+		<thumbnail>datingcoaches.webp</thumbnail>
 		<caption>Pickup Artistry, Dating, &amp; Building Confidence | Dr. K Interviews</caption>
 		<date>
 			<year>2020</year>
@@ -152,7 +152,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=COlSfNEsPZA&amp;t=110m0s</link>
-		<source>images/thumbnail/councilcontroversy.webp</source>
+		<thumbnail>councilcontroversy.webp</thumbnail>
 		<caption>Talking with FerociouslySteph, Controversy &amp; Identity</caption>
 		<date>
 			<year>2020</year>
@@ -162,7 +162,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=zn8vtW7Vaz4&amp;t=110m8s</link>
-		<source>images/thumbnail/train.webp</source>
+		<thumbnail>train.webp</thumbnail>
 		<caption>Talking with @Trainwreckstv: Staying Grounded and Focused</caption>
 		<date>
 			<year>2020</year>
@@ -172,7 +172,7 @@
 	</video>
 	<video>
 		<link>https://www.youtube.com/watch?v=zM-J9_ddpDA</link>
-		<source>images/thumbnail/ban.webp</source>
+		<thumbnail>ban.webp</thumbnail>
 		<caption>Wrongly BANNED from a Mental Health Discord?</caption>
 		<date>
 			<year>2020</year>

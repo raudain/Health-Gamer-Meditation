@@ -31,7 +31,7 @@ document.querySelectorAll(".drop-zone__input").forEach(inputElement => {
         }
 
         dropZoneElement.classList.remove("drop-zone--over");
-    })
+    });
 });
 
 /**

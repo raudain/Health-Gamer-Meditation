@@ -27,8 +27,8 @@ function displayVideos(xml) {
 		videoElement.appendChild(imageLink);
 		
 		const imageElement = document.createElement("img");
-		const imageSource = xmlVideo.getElementsByTagName("source")[0].childNodes[0].nodeValue;
-		imageElement.setAttribute("src", imageSource);
+		const imageName = xmlVideo.getElementsByTagName("thumbnail")[0].childNodes[0].nodeValue;
+		imageElement.setAttribute("src", "images/thumbnail/" + imageName);
 		imageLink.appendChild(imageElement);
 
 		const detailElement = document.createElement("div");
@@ -80,12 +80,81 @@ newElement.addEventListener("click", e => {
 const overlayElement = document.getElementById("overlay");
 const overlayBackground = document.getElementById("overlay-background");
 overlayBackground.addEventListener("click", returnFromOverlay);
+const animation = document.getElementById("animation");
+overlayBackground.addEventListener("dragover", function(){
+	animation.setAttribute("state", "drag-out");
+});
 
 function addVideo() {
 	overlayBackground.style.display = "block";
 	overlayElement.style.display = "block";
 }
 
+const closeButton = document.getElementById("close-button");
+closeButton.addEventListener("click", returnFromOverlay);
+
+const fileDrop = document.getElementById("ytcp-uploads-dialog-file-picker");
+fileDrop.addEventListener("dragover", function(){
+	animation.setAttribute("state", "drag-in");
+});
+
+window.addEventListener("dragover",function(e){
+	  e = e || event;
+	  e.preventDefault();
+	},false);
+window.addEventListener("drop",function(e){
+	  e = e || event;
+	  e.preventDefault();
+	},false);
+fileDrop.addEventListener("drop", e => {
+    e.preventDefault();
+    let inputElement = overlayElement.querySelector("input");
+    if (e.dataTransfer.files.length) {
+        inputElement.files = e.dataTransfer.files;
+        updateThumbnail(overlayElement, e.dataTransfer.files[0]);
+    }
+
+    overlayElement.classList.remove("drop-zone--over");
+    animation.setAttribute("state", "idle");
+});
+
+/**
+ * Updates the thumbnail on a drop zone element.
+ *
+ * @param {HTMLElement} overlayElement
+ * @param {File} file
+ */
+function updateThumbnail(overlayElement, file) {
+
+    let thumbnailElement = overlayElement.querySelector(".drop-zone__thumb");
+
+    // First time - remove the prompt
+    if (overlayElement.querySelector(".drop-zone__prompt")) {
+        overlayElement.querySelector(".drop-zone__prompt").remove();
+    }
+
+    // First time - there is no thumbnail element, so lets create it
+    if (!thumbnailElement) {
+        thumbnailElement = document.createElement("div");
+        thumbnailElement.classList.add("drop-zone__thumb");
+        overlayElement.appendChild(thumbnailElement);
+    }
+
+    thumbnailElement.dataset.label = file.name;
+
+    // Show thumbnail for image files
+    if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+        };
+    } else {
+        thumbnailElement.style.backgroundImage = null;
+    }
+
+}
 
 function returnFromOverlay() {
 	overlayBackground.style.display = "none";

@@ -4,6 +4,13 @@ body {
 	margin: 0px;
 }
 
+div {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
 #banner {
 	height: 20vw;
 	background-color: rgba(19, 37, 57, 1);
@@ -203,7 +210,7 @@ span {
     background: transparent;
 }
 
-#header div {
+#title {
 	font-family: Roboto, Noto, sans-serif;
 	font-weight: 500;
 	-webkit-font-smoothing: antialiased;
@@ -216,44 +223,71 @@ span {
     margin-right: 16px;
 }
 
-#header svg {
-	display: block;
+#close-button {
+	display: inline-flex;
 	height: 24px;
 	width: 24px;
+	fill: rgba(0, 0, 0, 0.55);
     margin-left: auto;
-    fill: rgba(0, 0, 0, 0.55);
+    padding: 8px;
     cursor: pointer;
 }
 
-#file-picker {
-	display: flex;
-	flex: 1;
+#close-button svg {
+	pointer-events: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#ytcp-uploads-dialog-file-picker.ytcp-uploads-dialog {
+    flex: 1;
+    height: auto;
+}
+
+ytcp-uploads-file-picker.ytcp-uploads-dialog {
+    margin-bottom: 24px;
+}
+
+ytcp-uploads-file-picker {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    --ytcp-feature-discovery-zindex: 3000;
+}
+
+#content.ytcp-uploads-file-picker {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 370px;
-    width: 42.5%;
-    height: auto;
-    margin: auto;
     padding: 16px 24px 0 24px;
-    position: absolute;
-    top: 0px;
-    right: 0;
-    bottom: 0px;
-    left: 0;
 }
 
-#circle {
+ytcp-uploads-file-picker:not([disabled]) ytcp-uploads-file-picker-animation.ytcp-uploads-file-picker {
+    cursor: pointer;
+}
+
+ytcp-uploads-file-picker-animation.ytcp-uploads-file-picker {
+    margin-top: auto;
+}
+
+ytcp-uploads-file-picker-animation {
+    display: block;
+}
+
+#circle.ytcp-uploads-file-picker-animation {
 	width: 136px;
     height: 136px;
     background: #ebebeb;
     position: relative;
     border-radius: 68px;
     overflow: hidden;
-    margin-top: auto;
 }
 
-#arrow-group {
+#arrow-group.ytcp-uploads-file-picker-animation {
 	position: absolute;
     top: calc(68px - 52px/2);
     left: calc(68px - 40px/2);
@@ -263,7 +297,7 @@ span {
     z-index: 30;
 }
 
-#arrow {
+#arrow.ytcp-uploads-file-picker-animation {
 	position: relative;
     width: 38px;
     height: 36px;
@@ -271,14 +305,7 @@ span {
     align-self: center;
 }
 
-#arrow-tip {
-	animation-name: arrow-tip-desqueez;
-    animation-timing-function: cubic-bezier(0.60, 0.00, 1.00, 1.00);
-    animation-duration: 300ms;
-    animation-iteration-count: 1;
-    animation-direction: reverse;
-    animation-fill-mode: forwards;
-    transform-origin: bottom center;
+#arrow-tip.ytcp-uploads-file-picker-animation {
     width: 0;
     height: 0;
     border-left: 19px solid transparent;
@@ -289,7 +316,41 @@ span {
     z-index: 30;
 }
 
-#smoke {
+@keyframes arrow-tip-squeez {
+	from {top: 0px;}
+	to {top: 16px;}
+}
+
+@keyframes arrow-tip-desqueez {
+	from {top: 0px;}
+	to {top: 16px;}
+}
+
+ytcp-uploads-file-picker-animation[state="drag-in"] #arrow-tip.ytcp-uploads-file-picker-animation {
+    animation-name: arrow-tip-squeez;
+    animation-timing-function: cubic-bezier(0.00, 0.00, 0.00, 1.00);
+}
+
+ytcp-uploads-file-picker-animation[state="drag-out"] #arrow-tip.ytcp-uploads-file-picker-animation, ytcp-uploads-file-picker-animation[state="drag-out"] #arrow-line.ytcp-uploads-file-picker-animation {
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+    transform-origin: bottom center;
+}
+
+ytcp-uploads-file-picker-animation[state="drag-out"] #arrow-line.ytcp-uploads-file-picker-animation {
+    animation-name: arrow-line-desqueez;
+    animation-timing-function: cubic-bezier(1.00, 0.00, 1.00, 1.00);
+}
+
+ytcp-uploads-file-picker-animation[state="drag-out"] #arrow-tip.ytcp-uploads-file-picker-animation {
+    animation-name: arrow-tip-desqueez;
+    animation-timing-function: cubic-bezier(0.60, 0.00, 1.00, 1.00);
+}
+
+#smoke.ytcp-uploads-file-picker-animation {
+    height: 150px;
 	background: white;
     opacity: 0.5;
     width: 36px;
@@ -301,15 +362,8 @@ span {
     transform: translateY(0px) scale(1, 0);
 }
 
-#arrow-line {
-	animation-name: arrow-line-desqueez;
-    animation-timing-function: cubic-bezier(1.00, 0.00, 1.00, 1.00);
-    animation-duration: 300ms;
-    animation-iteration-count: 1;
-    animation-direction: reverse;
-    animation-fill-mode: forwards;
-    transform-origin: bottom center;
-    width: 16px;
+#arrow-line.ytcp-uploads-file-picker-animation {
+	width: 16px;
     height: 16px;
     background: #949494;
     position: absolute;
@@ -318,7 +372,25 @@ span {
     z-index: 30;
 }
 
-#arrow-underline {
+@keyframes arrow-line-squeez {
+	from {width: 16px; height: 16px; top: 20px; left: 11px;}
+	to {width: 25px; height: 6px; top: 37px; left: 7px;}
+}
+
+ytcp-uploads-file-picker-animation[state="drag-in"] #arrow-tip.ytcp-uploads-file-picker-animation, ytcp-uploads-file-picker-animation[state="drag-in"] #arrow-line.ytcp-uploads-file-picker-animation {
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    transform-origin: bottom center;
+}
+
+#animation[state="drag-in"] #arrow-line.ytcp-uploads-file-picker-animation {
+    animation-name: arrow-line-squeez;
+    animation-timing-function: cubic-bezier(0.20, 0.00, 0.40, 1.00);
+}
+
+#arrow-underline.ytcp-uploads-file-picker-animation {
 	flex: none;
     align-self: center;
     width: 40px;
@@ -383,9 +455,29 @@ span {
     padding: calc(24px - 15px) 0 calc(12px - 5px);
 }
 
+#content input {
+	position: absolute;
+	overflow: hidden;
+	height: 0px;
+	width: 0px;
+	opacity: 0;
+	left: 0px;
+	top: 0px;
+	display: none;
+}
+
+form {
+	margin-top: 23px;
+	margin-bottom: 80%;
+}
+
+th {
+	text-align: left;
+}
+
 #save {
     width: 100%;
-    margin-top: var(--profile-spacing);
+    margin-top: 2vh;
     border-color: rgb(129, 191, 119);
     background-color: rgb(164,234,148);
 }

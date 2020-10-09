@@ -62,62 +62,55 @@
 	
 	<div id="overlay">
 		<div id="header">
-			<div>Add video</div>
-			<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope iron-icon">
-				<g class="style-scope iron-icon">
-					<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="style-scope iron-icon"></path>
+			<div id="title">Add video</div>
+			<div id="close-button">
+				<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false">
+					<g class="style-scope iron-icon">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="style-scope iron-icon"></path>
 				</g>
 			</svg>
-		</div>
-		<div id="file-picker">
-			<div id="circle">
-				<div id="arrow-group" class="style-scope ytcp-uploads-file-picker-animation">
-					<div id="arrow" class="style-scope ytcp-uploads-file-picker-animation">
-						<div id="arrow-tip" class="style-scope ytcp-uploads-file-picker-animation"></div>
-						<div id="smoke" class="style-scope ytcp-uploads-file-picker-animation"></div>
-						<div id="arrow-line" class="style-scope ytcp-uploads-file-picker-animation"></div>
-					</div>
-					<div id="arrow-underline" class="style-scope ytcp-uploads-file-picker-animation"></div>
-				</div>
 			</div>
-			<p>Drag and drop thumbnail file to upload</p>
-    		<div id="select-file-button">
-    			<div>Select files</div>
-    		</div>
-			<form action="update.htm">
-				<input type="hidden" name="room" value="${worker.getRoom()}" />
-				<table>
-					<tr>
-						<th>Name:</th>
-						<td><input type="text" name="workername"
-							value="${worker.getName()}"></td>
-					</tr>
-					<tr>
-						<th>Profession:</th>
-						<td><input type="text" name="profession"
-							value="${worker.getProfession()}"></td>
-					</tr>
-					<tr>
-						<th>Endurance:</th>
-						<td><input type="text" name="endurance"
-							value="${worker.getEndurance()}"></td>
-					</tr>
-					<tr>
-						<th>Level:</th>
-						<td><input type="text" name="level"
-							value="${worker.getLevel()}"></td>
-					</tr>
-					<tr>
-						<th>Cost:</th>
-						<td><input type="text" name="cost"
-							value="${worker.getCost()}"></td>
-					</tr>
-				</table>
-				<input id="save" type="submit" value="Save">
-			</form>
 		</div>
-	</div>
-	<script src="Main.js"></script>
+		<ytcp-uploads-file-picker id="ytcp-uploads-dialog-file-picker" class="style-scope ytcp-uploads-dialog">
+			<div id="content" class="style-scope ytcp-uploads-file-picker" style="position: relative;">
+				<ytcp-uploads-file-picker-animation id="animation" class="style-scope ytcp-uploads-file-picker" state="idle">
+					<div id="circle" class="style-scope ytcp-uploads-file-picker-animation">
+						<div id="arrow-group" class="style-scope ytcp-uploads-file-picker-animation">
+							<div id="arrow" class="style-scope ytcp-uploads-file-picker-animation">
+								<div id="arrow-tip" class="style-scope ytcp-uploads-file-picker-animation"></div>
+								<div id="smoke" class="style-scope ytcp-uploads-file-picker-animation"></div>
+								<div id="arrow-line" class="style-scope ytcp-uploads-file-picker-animation"></div>
+							</div>
+							<div id="arrow-underline" class="style-scope ytcp-uploads-file-picker-animation"></div>
+						</div>
+					</div>
+				</ytcp-uploads-file-picker-animation>
+				<p>Drag and drop thumbnail file to upload</p>
+    			<div id="select-file-button">
+    				<div>Select files</div>
+    			</div>
+    			<input type="file" name="Filedata">
+				<form action="update.htm">
+					<table>
+						<tr>
+							<th>Link:</th>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<th>Caption:</th>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<th>Upload date:</th>
+							<td><input type="date"></td>
+						</tr>
+					</table>
+					<input id="save" type="submit" value="Save">
+				</form>
+			</div>
+		</div>
+	</ytcp-uploads-file-picker>
+	<script src="main.js"></script>
 
 </body>
 
