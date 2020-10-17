@@ -12,46 +12,39 @@ public class VideoResource {
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Video> getVideos() {
-		ResultSet resultSet = null;
-		Connection connection = DataConnection.createConnection();
+		
+		final ArrayList<Video> videoList = new ArrayList<Video>();
+		final Connection connection = createConnection();
 		try {
-			Statement statement = connection.createStatement();
-			String query = "SELECT * FROM mydb.videos ORDER BY date DESC;";
-			resultSet = statement.executeQuery(query);
-		} catch (final SQLException e) {
-			e.printStackTrace();
-			;
-		}
-
-		ArrayList<Video> videoList = new ArrayList<Video>();
-		try {
+			final ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM mydb.videos ORDER BY date DESC;");
 			while (resultSet.next()) {
-				
-				Video video = new Video();
-
-				String link = resultSet.getString("link");
-				video.setLink(link);
-
-				String thumbnail = resultSet.getString("thumbnail");
-				video.setThumbnail(thumbnail);
-
-				String caption = resultSet.getString("caption");
-				video.setCaption(caption);
-
-				int date = resultSet.getInt("date");
-				video.setDate(date);
-
+				final Video video = new Video();
+				video.setLink(resultSet.getString("link"));
+				video.setStaticThumbnail(resultSet.getString("static_thumbnail"));
+				video.setCaption(resultSet.getString("caption"));
+				video.setDate(resultSet.getInt("date"));
 				videoList.add(video);
 			}
+			connection.close();
 		} catch (final SQLException e) {
-			System.out.println("Error. Problem reading data: " + e);
+			e.printStackTrace();
 		}
-		try {
-			DataConnection.closeConnection();
-		} catch (final SQLException e) {
-			System.out.println("Error. Problem with closing connection: " + e);
-		}
-
 		return videoList;
+	}
+	
+	private static Connection createConnection() {
+		
+		try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (final ClassNotFoundException exception) {
+        	exception.printStackTrace();
+        }
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
+        } catch (final SQLException exception) {
+        	exception.printStackTrace();
+        } 
+		return connection;
 	}
 }

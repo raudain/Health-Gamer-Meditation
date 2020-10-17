@@ -6,9 +6,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Video {
     
     private String link;
-    private String thumbnail;
+    private String staticThumbnail;
     private String caption;
     private int date;
+    private String animatedThumbnail;
 
     public String getLink() {
 
@@ -21,14 +22,14 @@ public class Video {
         this.link = link;
     }
 
-    public String getThumbnail() {
+    public String getStaticThumbnail() {
 
-        return thumbnail;
+        return staticThumbnail;
     }
 
-    public void setThumbnail(String thumbnail) {
+    public void setStaticThumbnail(String thumbnail) {
 
-        this.thumbnail = thumbnail;
+        this.staticThumbnail = thumbnail;
     }
 
     public String getCaption() {

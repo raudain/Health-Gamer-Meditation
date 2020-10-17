@@ -1,3 +1,4 @@
+// Existing videos
 const xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
@@ -14,10 +15,9 @@ xhttp.onreadystatechange = function () {
 			imageLink.setAttribute("href", xmlLink);
 			videoElement.appendChild(imageLink);
 		
-			const imageElement = document.createElement("img");
-			const imageSource = xmlVideo.getElementsByTagName("thumbnail")[0].childNodes[0].nodeValue;
-			imageElement.setAttribute("src", imageSource);
-			imageLink.appendChild(imageElement);
+			const staticThumbnail = document.createElement("img");
+			staticThumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
+			imageLink.appendChild(staticThumbnail);
 
 			const detailElement = document.createElement("div");
 			detailElement.classList.add("detail");
@@ -51,86 +51,25 @@ xhttp.onreadystatechange = function () {
 			}
 			timeElement.innerHTML = elapsedTime;
 			detailElement.appendChild(timeElement);
+			
+			const animatiedThumbnail = document.createElement("img");
+			//videoElement.addEventListener("mouseover", function() { alert("Hello World!"); });
 		}
 	}
 };
 xhttp.open("GET", "http://localhost:8080/MediRest/webapi/workers", true);
 xhttp.send();
 
-function displayVideos(xhttp) {
-	const xmlDoc = xhttp.responseXML;
-	const videoContainer = document.getElementById("videos");
-	const xmlVideos = xmlDoc.getElementsByTagName("video");
-	const thisDate = new Date();
-	for (let i = 0; i < xmlVideos.length; i++) {
-		const videoElement = document.createElement("div");
-		videoElement.classList.add("video");
-		videoContainer.appendChild(videoElement);
-
-		const xmlVideo = xmlVideos[i];
-
-		const imageLink = document.createElement("a");
-		const xmlLink = xmlVideo.getElementsByTagName("link")[0].childNodes[0].nodeValue;
-		imageLink.setAttribute("href", xmlLink);
-		videoElement.appendChild(imageLink);
-		
-		const imageElement = document.createElement("img");
-		const imageName = xmlVideo.getElementsByTagName("thumbnail")[0].childNodes[0].nodeValue;
-		imageElement.setAttribute("src", "images/thumbnail/" + imageName);
-		imageLink.appendChild(imageElement);
-
-		const detailElement = document.createElement("div");
-		detailElement.classList.add("detail");
-		videoElement.appendChild(detailElement);
-		
-		const captionLink = document.createElement("a");
-		const xmlCaption = xmlVideo.getElementsByTagName("caption")[0].childNodes[0].nodeValue;
-		captionLink.classList.add("video-title");
-		captionLink.setAttribute("title", xmlCaption);
-		captionLink.setAttribute("href", xmlLink);
-		captionLink.innerHTML = xmlCaption;
-		detailElement.appendChild(captionLink);
-		
-		const timeElement = document.createElement("span");
-		const xmlDate = xmlVideo.getElementsByTagName("date")[0].childNodes[0].nodeValue;
-		const videoYear = xmlDate.slice(0,4);
-		const videoMonth = xmlDate.slice(4,6);;
-		const videoDay = xmlDate.slice(6,8);;
-		const videoDate = new Date(videoYear, videoMonth, videoDay);
-		const Difference_In_Time = thisDate.getTime() - videoDate.getTime(); 
-		const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-		const dayDifference = Math.floor(Difference_In_Days);
-		const weekDifference = Math.floor(dayDifference / 7);
-		const monthDifference = Math.floor(weekDifference / 4);
-		let time;
-		if (weekDifference < 1) {
-			time = dayDifference + " days ago";
-		} else if (weekDifference == 1) {
-			time = weekDifference + " week ago";
-		} else if (weekDifference < 5) {
-			time = weekDifference + " weeks ago";
-		} else {
-			time = monthDifference + " month ago";
-		}
-		timeElement.innerHTML = time;
-		detailElement.appendChild(timeElement);
-	}
-}
-
 
 // New video
 
-const newElement = document.getElementById("place-holder");
-const buttonElement = document.getElementsByTagName("button")[0];
-newElement.addEventListener("click", e => {
-    buttonElement.click();
-});
+document.getElementById("place-holder").addEventListener("click", e => document.getElementsByTagName("button")[0].click());
 
 const overlayElement = document.getElementById("overlay");
 const overlayBackground = document.getElementById("overlay-background");
 overlayBackground.addEventListener("click", returnFromOverlay);
 const animation = document.getElementById("animation");
-overlayBackground.addEventListener("dragover", function(){
+overlayBackground.addEventListener("dragover", function() {
 	animation.setAttribute("state", "drag-out");
 });
 
@@ -143,15 +82,15 @@ const closeButton = document.getElementById("close-button");
 closeButton.addEventListener("click", returnFromOverlay);
 
 const fileDrop = document.getElementById("ytcp-uploads-dialog-file-picker");
-fileDrop.addEventListener("dragover", function(){
+fileDrop.addEventListener("dragover", function() {
 	animation.setAttribute("state", "drag-in");
 });
 
-window.addEventListener("dragover", function(e){
+window.addEventListener("dragover", function(e) {
 	  e = e || event;
 	  e.preventDefault();
 	},false);
-window.addEventListener("drop", function(e){
+window.addEventListener("drop", function(e) {
 	  e = e || event;
 	  e.preventDefault();
 	},false);
