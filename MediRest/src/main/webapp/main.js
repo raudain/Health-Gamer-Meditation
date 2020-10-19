@@ -15,10 +15,16 @@ xhttp.onreadystatechange = function () {
 			imageLink.setAttribute("href", xmlLink);
 			videoElement.appendChild(imageLink);
 		
-			const staticThumbnail = document.createElement("img");
-			staticThumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
-			imageLink.appendChild(staticThumbnail);
-
+			const thumbnail = document.createElement("img");
+			thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
+			videoElement.addEventListener("mouseover", function() { 
+				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("animatedThumbnail")[0].childNodes[0].nodeValue);
+			});
+			videoElement.addEventListener("mouseout", function() { 
+				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
+			});
+			imageLink.appendChild(thumbnail);
+			
 			const detailElement = document.createElement("div");
 			detailElement.classList.add("detail");
 			videoElement.appendChild(detailElement);
@@ -51,9 +57,6 @@ xhttp.onreadystatechange = function () {
 			}
 			timeElement.innerHTML = elapsedTime;
 			detailElement.appendChild(timeElement);
-			
-			const animatiedThumbnail = document.createElement("img");
-			//videoElement.addEventListener("mouseover", function() { alert("Hello World!"); });
 		}
 	}
 };
@@ -63,20 +66,18 @@ xhttp.send();
 
 // New video
 
-document.getElementById("place-holder").addEventListener("click", e => document.getElementsByTagName("button")[0].click());
-
-const overlayElement = document.getElementById("overlay");
+const overlayElement = document.getElementById("dialog");
 const overlayBackground = document.getElementById("overlay-background");
 overlayBackground.addEventListener("click", returnFromOverlay);
 const animation = document.getElementById("animation");
 overlayBackground.addEventListener("dragover", function() {
 	animation.setAttribute("state", "drag-out");
 });
-
-function addVideo() {
+document.getElementById("place-holder").addEventListener("click", function() {
 	overlayBackground.style.display = "block";
 	overlayElement.style.display = "block";
-}
+	setOverlayHeight();
+});
 
 const closeButton = document.getElementById("close-button");
 closeButton.addEventListener("click", returnFromOverlay);
@@ -85,6 +86,8 @@ const fileDrop = document.getElementById("ytcp-uploads-dialog-file-picker");
 fileDrop.addEventListener("dragover", function() {
 	animation.setAttribute("state", "drag-in");
 });
+
+window.addEventListener("resize", setOverlayHeight);
 
 window.addEventListener("dragover", function(e) {
 	  e = e || event;
@@ -141,8 +144,9 @@ function updateThumbnail(overlayElement, file) {
     } else {
         thumbnailElement.style.backgroundImage = null;
     }
-
 }
+
+function setOverlayHeight() { overlayElement.style.height = window.innerHeight - 90 + "px";}
 
 function returnFromOverlay() {
 	overlayBackground.style.display = "none";

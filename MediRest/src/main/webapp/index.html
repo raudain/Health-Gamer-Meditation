@@ -45,71 +45,72 @@
 		<div id="videos">
 			<div class="video">
 				<div id="place-holder">
-					<svg id="yt-icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block;">
-						<g class="style-scope yt-icon">
-        					<path d="M19,4H5A2.15,2.15,0,0,0,3,6V18a2.15,2.15,0,0,0,2,2H19a2.15,2.15,0,0,0,2-2V6A2.15,2.15,0,0,0,19,4ZM5,18H19V6H5Z" fill="#6f6f6f" fill-rule="evenodd" class="style-scope yt-icon"></path>
-        					<path d="M15,12,10,8v8Z" fill="#f80000" fill-rule="evenodd" class="style-scope yt-icon"></path>
+					<svg id="yt-icon" style="pointer-events: none; display: block;">
+						<g>
+        					<path d="M19,4H5A2.15,2.15,0,0,0,3,6V18a2.15,2.15,0,0,0,2,2H19a2.15,2.15,0,0,0,2-2V6A2.15,2.15,0,0,0,19,4ZM5,18H19V6H5Z" fill="#6f6f6f" fill-rule="evenodd"></path>
+        					<path d="M15,12,10,8v8Z" fill="#f80000" fill-rule="evenodd"></path>
       					</g>
       				</svg>
 					<span>Upload video</span>
-					<button type="button" onclick="addVideo()"></button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div id="overlay-background"></div>
-	
-	<div id="overlay">
-		<div id="header">
-			<div id="title">Add video</div>
-			<div id="close-button">
-				<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false">
-					<g class="style-scope iron-icon">
-						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="style-scope iron-icon"></path>
-				</g>
-			</svg>
+
+	<paper-dialog id="dialog" class="style-scope ytcp-uploads-dialog" style="outline: none; z-index: 2202; position: fixed; top: 24px; left: 119.5px;">
+		<div class="dialog-content style-scope ytcp-uploads-dialog">
+			<div id="header">
+				<div id="title">Add video</div>
+				<div id="close-button">
+					<svg>
+						<g class="style-scope iron-icon">
+							<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+					</g>
+				</svg>
+				</div>
 			</div>
-		</div>
-		<ytcp-uploads-file-picker id="ytcp-uploads-dialog-file-picker" class="style-scope ytcp-uploads-dialog">
-			<div id="content" class="style-scope ytcp-uploads-file-picker" style="position: relative;">
-				<ytcp-uploads-file-picker-animation id="animation" class="style-scope ytcp-uploads-file-picker" state="idle">
-					<div id="circle" class="style-scope ytcp-uploads-file-picker-animation">
-						<div id="arrow-group" class="style-scope ytcp-uploads-file-picker-animation">
-							<div id="arrow" class="style-scope ytcp-uploads-file-picker-animation">
-								<div id="arrow-tip" class="style-scope ytcp-uploads-file-picker-animation"></div>
-								<div id="smoke" class="style-scope ytcp-uploads-file-picker-animation"></div>
-								<div id="arrow-line" class="style-scope ytcp-uploads-file-picker-animation"></div>
+			<ytcp-uploads-file-picker id="ytcp-uploads-dialog-file-picker" class="style-scope ytcp-uploads-dialog">
+				<div id="content" class="style-scope ytcp-uploads-file-picker" style="position: relative;">
+					<ytcp-uploads-file-picker-animation id="animation" class="style-scope ytcp-uploads-file-picker" state="idle">
+						<div id="circle" class="style-scope ytcp-uploads-file-picker-animation">
+							<div id="arrow-group" class="style-scope ytcp-uploads-file-picker-animation">
+								<div id="arrow" class="style-scope ytcp-uploads-file-picker-animation">
+									<div id="arrow-tip" class="style-scope ytcp-uploads-file-picker-animation"></div>
+									<div id="smoke" class="style-scope ytcp-uploads-file-picker-animation"></div>
+									<div id="arrow-line" class="style-scope ytcp-uploads-file-picker-animation"></div>
+								</div>
+								<div id="arrow-underline" class="style-scope ytcp-uploads-file-picker-animation"></div>
 							</div>
-							<div id="arrow-underline" class="style-scope ytcp-uploads-file-picker-animation"></div>
 						</div>
-					</div>
-				</ytcp-uploads-file-picker-animation>
-				<p>Drag and drop thumbnail file to upload</p>
-    			<div id="select-file-button">
-    				<div>Select files</div>
-    			</div>
-    			<input type="file" name="Filedata">
-				<form action="update.htm">
-					<table>
-						<tr>
-							<th>Link:</th>
-							<td><input type="text"></td>
-						</tr>
-						<tr>
-							<th>Caption:</th>
-							<td><input type="text"></td>
-						</tr>
-						<tr>
-							<th>Upload date:</th>
-							<td><input type="date"></td>
-						</tr>
-					</table>
-					<input id="save" type="submit" value="Save">
-				</form>
-			</div>
+					</ytcp-uploads-file-picker-animation>
+					<p>Drag and drop thumbnail file to upload</p>
+	    			<div id="select-file-button">
+	    				<div>Select files</div>
+	    			</div>
+	    			<input type="file" name="Filedata">
+					<form action="update.htm">
+						<table>
+							<tr>
+								<th>Link:</th>
+								<td><input type="text"></td>
+							</tr>
+							<tr>
+								<th>Caption:</th>
+								<td><input type="text"></td>
+							</tr>
+							<tr>
+								<th>Upload date:</th>
+								<td><input type="date"></td>
+							</tr>
+						</table>
+						<input id="save" type="submit" value="Save">
+					</form>
+				</div>
+			</ytcp-uploads-file-picker>
 		</div>
-	</ytcp-uploads-file-picker>
+	</paper-dialog>
 	<script src="main.js"></script>
 
 </body>

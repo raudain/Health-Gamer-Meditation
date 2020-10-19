@@ -16,13 +16,15 @@ public class VideoResource {
 		final ArrayList<Video> videoList = new ArrayList<Video>();
 		final Connection connection = createConnection();
 		try {
-			final ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM mydb.videos ORDER BY date DESC;");
+			final String query = "SELECT * FROM mydb.videos ORDER BY date DESC;";
+			final ResultSet resultSet = connection.createStatement().executeQuery(query);
 			while (resultSet.next()) {
 				final Video video = new Video();
 				video.setLink(resultSet.getString("link"));
 				video.setStaticThumbnail(resultSet.getString("static_thumbnail"));
 				video.setCaption(resultSet.getString("caption"));
 				video.setDate(resultSet.getInt("date"));
+				video.setAnimatedThumbnail(resultSet.getString("animated_thumbnail"));
 				videoList.add(video);
 			}
 			connection.close();
