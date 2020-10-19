@@ -470,6 +470,16 @@ ytcp-uploads-file-picker-animation[state="drag-in"] #arrow-tip.ytcp-uploads-file
     padding: calc(24px - 15px) 0 calc(12px - 5px);
 }
 
+.sublabel.ytcp-uploads-file-picker {
+    font-family: 'Roboto', 'Noto', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--ytcp-black-secondary);
+    margin-top: calc(40px - 23px);
+}
+
 #content input {
 	position: absolute;
 	overflow: hidden;
@@ -483,7 +493,7 @@ ytcp-uploads-file-picker-animation[state="drag-in"] #arrow-tip.ytcp-uploads-file
 
 form {
 	margin-top: 23px;
-	margin-bottom: 80%;
+	margin-bottom: auto;
 }
 
 th {

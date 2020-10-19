@@ -85,11 +85,13 @@
 							</div>
 						</div>
 					</ytcp-uploads-file-picker-animation>
-					<p>Drag and drop thumbnail file to upload</p>
-	    			<div id="select-file-button">
+					<p class="sublabel style-scope ytcp-uploads-file-picker">
+						Drag and drop thumbnail file to upload
+					</p>
+	    			<ytcp-button id="select-file-button" class="style-scope ytcp-uploads-file-picker">
 	    				<div>Select files</div>
-	    			</div>
-	    			<input type="file" name="Filedata">
+	    			</ytcp-button>
+	    			<input type="file" name="Filedata" style="position: absolute; overflow: hidden; height: 0px; width: 0px; opacity: 0; left: 0px; top: 0px; display: none;">
 					<form action="update.htm">
 						<table>
 							<tr>
