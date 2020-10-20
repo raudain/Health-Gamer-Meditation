@@ -14,21 +14,21 @@ xhttp.onreadystatechange = function () {
 			const xmlLink = xmlVideo.getElementsByTagName("link")[0].childNodes[0].nodeValue;
 			imageLink.setAttribute("href", xmlLink);
 			videoElement.appendChild(imageLink);
-		
+
 			const thumbnail = document.createElement("img");
 			thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
-			videoElement.addEventListener("mouseover", function() { 
+			videoElement.addEventListener("mouseover", function() {
 				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("animatedThumbnail")[0].childNodes[0].nodeValue);
 			});
-			videoElement.addEventListener("mouseout", function() { 
+			videoElement.addEventListener("mouseout", function() {
 				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
 			});
 			imageLink.appendChild(thumbnail);
-			
+
 			const detailElement = document.createElement("div");
 			detailElement.classList.add("detail");
 			videoElement.appendChild(detailElement);
-		
+
 			const captionLink = document.createElement("a");
 			const xmlCaption = xmlVideo.getElementsByTagName("caption")[0].childNodes[0].nodeValue;
 			captionLink.classList.add("video-title");
@@ -36,7 +36,7 @@ xhttp.onreadystatechange = function () {
 			captionLink.setAttribute("href", xmlLink);
 			captionLink.innerHTML = xmlCaption;
 			detailElement.appendChild(captionLink);
-		
+
 			const timeElement = document.createElement("span");
 			const xmlDate = xmlVideo.getElementsByTagName("date")[0].childNodes[0].nodeValue;
 			const todaysDate = new Date();
@@ -81,6 +81,10 @@ document.getElementById("place-holder").addEventListener("click", function() {
 
 const closeButton = document.getElementById("close-button");
 closeButton.addEventListener("click", returnFromOverlay);
+
+const fileInput = document.getElementsByTagName("input")[0];
+animation.addEventListener("click", e => fileInput.click());
+document.getElementById("select-file-button").addEventListener("click", e => fileInput.click());
 
 const fileDrop = document.getElementById("ytcp-uploads-dialog-file-picker");
 fileDrop.addEventListener("dragover", function() {
