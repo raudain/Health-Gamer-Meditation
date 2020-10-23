@@ -1,4 +1,3 @@
-// Existing videos
 const xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
@@ -6,6 +5,10 @@ xhttp.onreadystatechange = function () {
 		for (let i = 0; i < xmlVideos.length; i++) {
 			const videoElement = document.createElement("div");
 			videoElement.classList.add("video");
+			videoElement.addEventListener("dblclick", function() {
+				videoElement.remove();
+				xhttp.open("DELETE", "http://localhost:8080/MediRest/webapi/videos", true);
+			});
 			document.getElementById("videos").appendChild(videoElement);
 
 			const xmlVideo = xmlVideos[i];
@@ -17,17 +20,7 @@ xhttp.onreadystatechange = function () {
 
 			const thumbnail = document.createElement("img");
 			thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
-			videoElement.addEventListener("mouseover", function() {
-				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("animatedThumbnail")[0].childNodes[0].nodeValue);
-			});
-			videoElement.addEventListener("mouseout", function() {
-				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
-			});
 			imageLink.appendChild(thumbnail);
-
-			const detailElement = document.createElement("div");
-			detailElement.classList.add("detail");
-			videoElement.appendChild(detailElement);
 
 			const captionLink = document.createElement("a");
 			const xmlCaption = xmlVideo.getElementsByTagName("caption")[0].childNodes[0].nodeValue;
@@ -35,7 +28,7 @@ xhttp.onreadystatechange = function () {
 			captionLink.setAttribute("title", xmlCaption);
 			captionLink.setAttribute("href", xmlLink);
 			captionLink.innerHTML = xmlCaption;
-			detailElement.appendChild(captionLink);
+			videoElement.appendChild(captionLink);
 
 			const timeElement = document.createElement("span");
 			const xmlDate = xmlVideo.getElementsByTagName("date")[0].childNodes[0].nodeValue;
@@ -56,103 +49,11 @@ xhttp.onreadystatechange = function () {
 				elapsedTime = monthDifference + " month ago";
 			}
 			timeElement.innerHTML = elapsedTime;
-			detailElement.appendChild(timeElement);
+			videoElement.appendChild(timeElement);
 		}
 	}
 };
-xhttp.open("GET", "http://localhost:8080/MediRest/webapi/workers", true);
+xhttp.open("GET", "http://localhost:8080/MediRest/webapi/videos", true);
 xhttp.send();
 
-
-// New video
-
-const overlayElement = document.getElementById("dialog");
-const overlayBackground = document.getElementById("overlay-background");
-overlayBackground.addEventListener("click", returnFromOverlay);
-const animation = document.getElementById("animation");
-overlayBackground.addEventListener("dragover", function() {
-	animation.setAttribute("state", "drag-out");
-});
-document.getElementById("place-holder").addEventListener("click", function() {
-	overlayBackground.style.display = "block";
-	overlayElement.style.display = "block";
-	setOverlayHeight();
-});
-
-const closeButton = document.getElementById("close-button");
-closeButton.addEventListener("click", returnFromOverlay);
-
-const fileInput = document.getElementsByTagName("input")[0];
-animation.addEventListener("click", e => fileInput.click());
-document.getElementById("select-file-button").addEventListener("click", e => fileInput.click());
-
-const fileDrop = document.getElementById("ytcp-uploads-dialog-file-picker");
-fileDrop.addEventListener("dragover", function() {
-	animation.setAttribute("state", "drag-in");
-});
-
-window.addEventListener("resize", setOverlayHeight);
-
-window.addEventListener("dragover", function(e) {
-	  e = e || event;
-	  e.preventDefault();
-	},false);
-window.addEventListener("drop", function(e) {
-	  e = e || event;
-	  e.preventDefault();
-	},false);
-fileDrop.addEventListener("drop", e => {
-    e.preventDefault();
-    let inputElement = overlayElement.querySelector("input");
-    if (e.dataTransfer.files.length) {
-        inputElement.files = e.dataTransfer.files;
-        updateThumbnail(overlayElement, e.dataTransfer.files[0]);
-    }
-
-    overlayElement.classList.remove("drop-zone--over");
-    animation.setAttribute("state", "idle");
-});
-
-/**
- * Updates the thumbnail on a drop zone element.
- *
- * @param {HTMLElement} overlayElement
- * @param {File} file
- */
-function updateThumbnail(overlayElement, file) {
-
-    let thumbnailElement = overlayElement.querySelector(".drop-zone__thumb");
-
-    // First time - remove the prompt
-    if (overlayElement.querySelector(".drop-zone__prompt")) {
-        overlayElement.querySelector(".drop-zone__prompt").remove();
-    }
-
-    // First time - there is no thumbnail element, so lets create it
-    if (!thumbnailElement) {
-        thumbnailElement = document.createElement("div");
-        thumbnailElement.classList.add("drop-zone__thumb");
-        overlayElement.appendChild(thumbnailElement);
-    }
-
-    thumbnailElement.dataset.label = file.name;
-
-    // Show thumbnail for image files
-    if (file.type.startsWith("image/")) {
-        const reader = new FileReader();
-
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-        };
-    } else {
-        thumbnailElement.style.backgroundImage = null;
-    }
-}
-
-function setOverlayHeight() { overlayElement.style.height = window.innerHeight - 90 + "px";}
-
-function returnFromOverlay() {
-	overlayBackground.style.display = "none";
-	overlayElement.style.display = "none";
-}
+window.addEventListener("resize", e => document.getElementById("video-container").style.height = "70vh");

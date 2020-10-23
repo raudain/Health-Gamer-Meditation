@@ -6,7 +6,7 @@ import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("workers")
+@Path("videos")
 public class VideoResource {
 	
 	@GET
@@ -24,7 +24,6 @@ public class VideoResource {
 				video.setStaticThumbnail(resultSet.getString("static_thumbnail"));
 				video.setCaption(resultSet.getString("caption"));
 				video.setDate(resultSet.getInt("date"));
-				video.setAnimatedThumbnail(resultSet.getString("animated_thumbnail"));
 				videoList.add(video);
 			}
 			connection.close();
@@ -34,7 +33,18 @@ public class VideoResource {
 		return videoList;
 	}
 	
-	private static Connection createConnection() {
+	@POST
+	@Path("alien")
+	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Video createAlien(Video a1)
+	{
+		System.out.println(a1);
+		//repo.create(a1);
+		
+		return a1;
+	}
+	
+	public static Connection createConnection() {
 		
 		try {
             Class.forName("com.mysql.cj.jdbc.Driver");
