@@ -8,11 +8,10 @@ import javax.ws.rs.core.MediaType;
 
 @Path("videos")
 public class VideoResource {
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Video> getVideos() {
-		
 		final ArrayList<Video> videoList = new ArrayList<Video>();
 		final Connection connection = createConnection();
 		try {
@@ -32,31 +31,53 @@ public class VideoResource {
 		}
 		return videoList;
 	}
-	
+
 	@POST
-	@Path("alien")
-	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Video createAlien(Video a1)
-	{
-		System.out.println(a1);
-		//repo.create(a1);
-		
-		return a1;
+	@Consumes(MediaType.APPLICATION_XML)
+	public Video createVideo(Video video) {
+		String sql = "INSERT INTO `mydb`.`videos` SET `static_thumbnail` = ?, `link` = ?, `caption` =?, `date` =?;";
+		final Connection connection = createConnection();
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setString(1, video.getStaticThumbnail());
+			st.setString(2, video.getLink());
+			st.setString(3, video.getCaption());
+			st.setInt(4, video.getDate());
+			st.executeUpdate();
+		} catch (final SQLException exception) {
+			exception.printStackTrace();
+		}
+
+		return video;
+	}
+
+	@DELETE
+	@Path("/{caption}")
+	public String deleteVideo(@PathParam("caption") String caption) {
+		String sql = "DELETE FROM `mydb`.`videos` WHERE (`caption` = ?);";
+		final Connection connection = createConnection();
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setString(1, caption);
+			st.executeUpdate();
+		} catch (final SQLException exception) {
+			exception.printStackTrace();
+		}
+		return caption;
 	}
 	
 	public static Connection createConnection() {
-		
 		try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (final ClassNotFoundException exception) {
-        	exception.printStackTrace();
-        }
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
-        } catch (final SQLException exception) {
-        	exception.printStackTrace();
-        } 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (final ClassNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		Connection connection = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
+		} catch (final SQLException exception) {
+			exception.printStackTrace();
+		}
 		return connection;
 	}
 }

@@ -9,21 +9,20 @@ public class Video {
     private String caption;
     private int date;
 
-    public String getLink() {
-        return link;
-    }
-
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getStaticThumbnail() {
+	public String getStaticThumbnail() {
         return staticThumbnail;
     }
 
     public void setStaticThumbnail(String thumbnail) {
         this.staticThumbnail = thumbnail;
+    }
+	
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getCaption() {
