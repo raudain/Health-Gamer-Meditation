@@ -23,6 +23,7 @@ public class VideoResource {
 				video.setStaticThumbnail(resultSet.getString("static_thumbnail"));
 				video.setCaption(resultSet.getString("caption"));
 				video.setDate(resultSet.getInt("date"));
+				video.setAnimatedThumbnail(resultSet.getString("animated_thumbnail"));
 				videoList.add(video);
 			}
 			connection.close();

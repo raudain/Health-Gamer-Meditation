@@ -1,4 +1,6 @@
 const gethttp = new XMLHttpRequest();
+const url = "http://localhost:8080/MediRest/api/videos";
+gethttp.open("GET", url, true);
 gethttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
 		const xmlVideos = gethttp.responseXML.getElementsByTagName("video");
@@ -15,7 +17,12 @@ gethttp.onreadystatechange = function () {
 			videoElement.appendChild(imageLink);
 
 			const thumbnail = document.createElement("img");
-			thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue);
+			const staticThumbnail = xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue;
+			thumbnail.setAttribute("src", staticThumbnail);
+			thumbnail.addEventListener("mouseover", function() {
+				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("animatedThumbnail")[0].childNodes[0].nodeValue);
+			});
+			thumbnail.addEventListener("mouseout", e => thumbnail.setAttribute("src", staticThumbnail));
 			imageLink.appendChild(thumbnail);
 
 			const captionLink = document.createElement("a");
@@ -53,8 +60,6 @@ gethttp.onreadystatechange = function () {
 		}
 	}
 };
-const url = "http://localhost:8080/MediRest/webapi/videos";
-gethttp.open("GET", url, true);
 gethttp.send();
 
 window.addEventListener("resize", e => document.getElementById("video-container").style.height = "1110px");

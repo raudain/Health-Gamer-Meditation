@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Video {
 	private String staticThumbnail;
+	private String animatedThumbnail;
     private String link;
     private String caption;
     private int date;
@@ -40,4 +41,12 @@ public class Video {
     public void setDate(int date) {
         this.date = date;
     }
+
+	public String getAnimatedThumbnail() {
+		return animatedThumbnail;
+	}
+
+	public void setAnimatedThumbnail(String animatedThumbnail) {
+		this.animatedThumbnail = animatedThumbnail;
+	}
 }
