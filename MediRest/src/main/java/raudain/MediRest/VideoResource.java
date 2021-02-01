@@ -10,13 +10,14 @@ import javax.ws.rs.core.MediaType;
 public class VideoResource {
 
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public List<Video> getVideos() {
 		final ArrayList<Video> videoList = new ArrayList<Video>();
 		final Connection connection = createConnection();
 		try {
 			final String query = "SELECT * FROM mydb.videos ORDER BY date DESC;";
-			final ResultSet resultSet = connection.createStatement().executeQuery(query);
+			final Statement statement = connection.createStatement();
+			final ResultSet resultSet = statement.executeQuery(query);
 			while (resultSet.next()) {
 				final Video video = new Video();
 				video.setLink(resultSet.getString("link"));

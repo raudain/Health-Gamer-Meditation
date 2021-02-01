@@ -3,8 +3,7 @@ const url = "http://localhost:8080/MediRest/api/videos";
 gethttp.open("GET", url, true);
 gethttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
-		const responseXmlData = gethttp.responseXML;
-		const xmlVideos = responseXmlData.getElementsByTagName("video");
+		const xmlVideos = gethttp.responseXML.getElementsByTagName("video");
 		for (let i = 0; i < xmlVideos.length; i++) {
 			const videoElement = document.createElement("div");
 			videoElement.classList.add("video");
@@ -82,27 +81,27 @@ function createVideo() {
     const xmlDoc = document.implementation.createDocument(null, "video");
 	const video = xmlDoc.getElementsByTagName("video")[0];
 	const form = document.getElementsByTagName("form")[0];
-
+	
 	const thumbnailElement = xmlDoc.createElement("staticThumbnail");
 	video.appendChild(thumbnailElement);
 	const thumbnailText = xmlDoc.createTextNode(form.elements[0].value);
 	thumbnailElement.appendChild(thumbnailText);
-
+	
 	const linkElement = xmlDoc.createElement("link");
 	video.appendChild(linkElement);
 	const linkText = xmlDoc.createTextNode(form.elements[1].value);
 	linkElement.appendChild(linkText);
-
+	
 	const captionElement = xmlDoc.createElement("caption");
 	video.appendChild(captionElement);
 	const captionText = xmlDoc.createTextNode(form.elements[2].value);
 	captionElement.appendChild(captionText);
-
+	
 	const dateElement = xmlDoc.createElement("date");
 	video.appendChild(dateElement);
 	const dateText = xmlDoc.createTextNode(form.elements[3].value);
 	dateElement.appendChild(dateText);
-
+	
 	return xmlDoc;
 }
 
