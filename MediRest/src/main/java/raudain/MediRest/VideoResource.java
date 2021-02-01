@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 public class VideoResource {
 
 	@GET
-	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public List<Video> getVideos() {
 		final ArrayList<Video> videoList = new ArrayList<Video>();
 		final Connection connection = createConnection();
@@ -35,7 +35,7 @@ public class VideoResource {
 	}
 
 	@POST
-	@Consumes(MediaType.APPLICATION_XML)
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Video createVideo(Video video) {
 		String sql = "INSERT INTO `mydb`.`videos` SET `static_thumbnail` = ?, `link` = ?, `caption` =?, `date` =?;";
 		final Connection connection = createConnection();

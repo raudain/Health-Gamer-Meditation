@@ -1,16 +1,16 @@
-const gethttp = new XMLHttpRequest();
+const xmlhttp = new XMLHttpRequest();
 const url = "http://localhost:8080/MediRest/api/videos";
-gethttp.open("GET", url, true);
-gethttp.onreadystatechange = function () {
+xmlhttp.open("GET", url, true);
+xmlhttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
-		const responseXmlData = gethttp.responseXML;
-		const xmlVideos = responseXmlData.getElementsByTagName("video");
-		for (let i = 0; i < xmlVideos.length; i++) {
+		const responseXmlData = xmlhttp.responseXML;
+		const videoList = responseXmlData.getElementsByTagName("video");
+		for (let i = 0; i < videoList.length; i++) {
 			const videoElement = document.createElement("div");
 			videoElement.classList.add("video");
 			document.getElementById("videos").appendChild(videoElement);
 
-			const xmlVideo = xmlVideos[i];
+			const xmlVideo = videoList[i];
 
 			const imageLink = document.createElement("a");
 			const xmlLink = xmlVideo.getElementsByTagName("link")[0].childNodes[0].nodeValue;
@@ -61,7 +61,7 @@ gethttp.onreadystatechange = function () {
 		}
 	}
 };
-gethttp.send();
+xmlhttp.send();
 
 window.addEventListener("resize", e => document.getElementById("video-container").style.height = "1110px");
 
