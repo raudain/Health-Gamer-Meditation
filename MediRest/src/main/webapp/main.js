@@ -3,8 +3,8 @@ const url = "http://localhost:8080/MediRest/api/videos";
 xmlhttp.open("GET", url, true);
 xmlhttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
-		const responseXmlData = xmlhttp.responseXML;
-		const videoList = responseXmlData.getElementsByTagName("video");
+		const responseData = xmlhttp.responseXML;
+		const videoList = responseData.getElementsByTagName("video");
 		for (let i = 0; i < videoList.length; i++) {
 			const videoElement = document.createElement("div");
 			videoElement.classList.add("video");
