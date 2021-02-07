@@ -1,66 +1,105 @@
 const xmlhttp = new XMLHttpRequest();
-const url = "http://localhost:8080/MediRest/api/videos";
+var url = "http://localhost/meditation/api/read.php";
+url = "http://localhost:8080/MediRest/api/videos";
 xmlhttp.open("GET", url, true);
 xmlhttp.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
-		const responseData = xmlhttp.responseXML;
-		const videoList = responseData.getElementsByTagName("video");
-		for (let i = 0; i < videoList.length; i++) {
-			const videoElement = document.createElement("div");
-			videoElement.classList.add("video");
-			document.getElementById("videos").appendChild(videoElement);
+		let videoObj;
+		const isXml = this.responseXML != null;
+		let videoList;
+		
+		if (isXml) {
+			videoList = xmlhttp.responseXML.getElementsByTagName("video");
+		} else {
+			videoList = JSON.parse(this.responseText);
+		}
 
-			const xmlVideo = videoList[i];
+		for (videoObj of videoList) {
+			let objLink;
+			let staticThumbnail;
+			let objCaption;
+			let objDate;
 
-			const imageLink = document.createElement("a");
-			const xmlLink = xmlVideo.getElementsByTagName("link")[0].childNodes[0].nodeValue;
-			imageLink.setAttribute("href", xmlLink);
-			videoElement.appendChild(imageLink);
-
-			const thumbnail = document.createElement("img");
-			const staticThumbnail = xmlVideo.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue;
-			thumbnail.setAttribute("src", staticThumbnail);
-			thumbnail.addEventListener("mouseover", function() {
-				thumbnail.setAttribute("src", xmlVideo.getElementsByTagName("animatedThumbnail")[0].childNodes[0].nodeValue);
-			});
-			thumbnail.addEventListener("mouseout", e => thumbnail.setAttribute("src", staticThumbnail));
-			imageLink.appendChild(thumbnail);
-
-			const captionLink = document.createElement("a");
-			const xmlCaption = xmlVideo.getElementsByTagName("caption")[0].childNodes[0].nodeValue;
-			videoElement.addEventListener("dblclick", function() {
-				deleteVideo("/" + xmlCaption);
-				videoElement.remove();
-			});
-			captionLink.classList.add("video-title");
-			captionLink.setAttribute("title", xmlCaption);
-			captionLink.setAttribute("href", xmlLink);
-			captionLink.innerHTML = xmlCaption;
-			videoElement.appendChild(captionLink);
-
-			const timeElement = document.createElement("span");
-			const xmlDate = xmlVideo.getElementsByTagName("date")[0].childNodes[0].nodeValue;
-			const todaysDate = new Date();
-			const videoDate = new Date(xmlDate.slice(0,4), xmlDate.slice(4,6) - 1, xmlDate.slice(6,8));
-			const Difference_In_Days = (todaysDate.getTime() - videoDate.getTime()) / (1000 * 3600 * 24);
-			const dayDifference = Math.floor(Difference_In_Days);
-			const weekDifference = Math.floor(dayDifference / 7);
-			const monthDifference = Math.floor(weekDifference / 4);
-			let elapsedTime;
-			if (weekDifference < 1) {
-				elapsedTime = dayDifference + " days ago";
-			} else if (weekDifference == 1) {
-				elapsedTime = weekDifference + " week ago";
-			} else if (weekDifference < 5) {
-				elapsedTime = weekDifference + " weeks ago";
+			if (isXml) {
+				objLink = videoObj.getElementsByTagName("link")[0].childNodes[0].nodeValue;
+				staticThumbnail = videoObj.getElementsByTagName("staticThumbnail")[0].childNodes[0].nodeValue;
+				objCaption = videoObj.getElementsByTagName("caption")[0].childNodes[0].nodeValue;
+				objDate = videoObj.getElementsByTagName("date")[0].childNodes[0].nodeValue;
 			} else {
-				elapsedTime = monthDifference + " month ago";
+				objLink = videoObj.link;
+				staticThumbnail = videoObj.staticThumbnail;
+				objCaption = videoObj.caption;
+				objDate = videoObj.date.toString();
 			}
-			timeElement.innerHTML = elapsedTime;
-			videoElement.appendChild(timeElement);
+
+			const videoElement = createVideoElement();
+			const imageLink = createImageLink(objLink, videoElement);
+			createThumbnail(staticThumbnail, imageLink);
+			createCaptionLink(objCaption, objLink, videoElement);
+			createTimeElement(objDate, videoElement);
 		}
 	}
 };
+
+function createVideoElement() {
+	const videoElement = document.createElement("div");
+	videoElement.classList.add("video");
+	document.getElementById("videos").appendChild(videoElement);
+	return videoElement;
+}
+
+function createImageLink(objLink, videoElement) {
+	const imageLink = document.createElement("a");
+	imageLink.setAttribute("href", objLink);
+	videoElement.appendChild(imageLink);
+	return imageLink;
+}
+
+function createThumbnail(staticThumbnail, imageLink) {
+	const thumbnail = document.createElement("img");
+	thumbnail.setAttribute("src", staticThumbnail);
+	/*thumbnail.addEventListener("mouseover", function() {
+		thumbnail.setAttribute("src", videoObj.getElementsByTagName("animatedThumbnail")[0].childNodes[0].nodeValue);
+	});*/
+	thumbnail.addEventListener("mouseout", e => thumbnail.setAttribute("src", staticThumbnail));
+	imageLink.appendChild(thumbnail);
+}
+
+function createCaptionLink(objCaption, objLink, videoElement) {
+	const captionLink = document.createElement("a");
+	videoElement.addEventListener("dblclick", function() {
+		deleteVideo("/" + objCaption);
+		videoElement.remove();
+	});
+	captionLink.classList.add("video-title");
+	captionLink.setAttribute("title", objCaption);
+	captionLink.setAttribute("href", objLink);
+	captionLink.innerHTML = objCaption;
+	videoElement.appendChild(captionLink);
+}
+
+function createTimeElement(objDate, videoElement) {
+	const timeElement = document.createElement("span");
+	const todaysDate = new Date();
+	const videoDate = new Date(objDate.slice(0,4), objDate.slice(4,6) - 1, objDate.slice(6,8));
+	const Difference_In_Days = (todaysDate.getTime() - videoDate.getTime()) / (1000 * 3600 * 24);
+	const dayDifference = Math.floor(Difference_In_Days);
+	const weekDifference = Math.floor(dayDifference / 7);
+	const monthDifference = Math.floor(weekDifference / 4);
+	let elapsedTime;
+	if (weekDifference < 1) {
+		elapsedTime = dayDifference + " days ago";
+	} else if (weekDifference == 1) {
+		elapsedTime = weekDifference + " week ago";
+	} else if (weekDifference < 5) {
+		elapsedTime = weekDifference + " weeks ago";
+	} else {
+		elapsedTime = monthDifference + " month ago";
+	}
+	timeElement.innerHTML = elapsedTime;
+	videoElement.appendChild(timeElement);
+}
+
 xmlhttp.send();
 
 window.addEventListener("resize", e => document.getElementById("video-container").style.height = "1110px");

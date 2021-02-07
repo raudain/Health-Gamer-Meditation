@@ -10,8 +10,8 @@ import javax.ws.rs.core.MediaType;
 public class VideoResource {
 
 	@GET
-	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	//@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	//@Produces({MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON})
 	public List<Video> getVideos() {
 		final ArrayList<Video> videoList = new ArrayList<Video>();
 		final Connection connection = createConnection();
@@ -22,10 +22,10 @@ public class VideoResource {
 			while (resultSet.next()) {
 				final Video video = new Video();
 				video.setLink(resultSet.getString("link"));
-				video.setStaticThumbnail(resultSet.getString("static_thumbnail"));
+				video.setStaticThumbnail(resultSet.getString("staticThumbnail"));
 				video.setCaption(resultSet.getString("caption"));
 				video.setDate(resultSet.getInt("date"));
-				video.setAnimatedThumbnail(resultSet.getString("animated_thumbnail"));
+				video.setAnimatedThumbnail(resultSet.getString("animatedThumbnail"));
 				videoList.add(video);
 			}
 			connection.close();
