@@ -7,7 +7,7 @@ xmlhttp.onreadystatechange = function () {
 		let videoObj;
 		const isXml = this.responseXML != null;
 		let videoList;
-		
+
 		if (isXml) {
 			videoList = xmlhttp.responseXML.getElementsByTagName("video");
 		} else {
@@ -61,7 +61,7 @@ function createThumbnail(staticThumbnail, imageLink) {
 	/*thumbnail.addEventListener("mouseover", function() {
 		thumbnail.setAttribute("src", videoObj.getElementsByTagName("animatedThumbnail")[0].childNodes[0].nodeValue);
 	});*/
-	thumbnail.addEventListener("mouseout", e => thumbnail.setAttribute("src", staticThumbnail));
+	thumbnail.addEventListener("mouseout", function(){ thumbnail.setAttribute("src", staticThumbnail); });
 	imageLink.appendChild(thumbnail);
 }
 
@@ -102,7 +102,7 @@ function createTimeElement(objDate, videoElement) {
 
 xmlhttp.send();
 
-window.addEventListener("resize", e => document.getElementById("video-container").style.height = "1110px");
+window.addEventListener("resize", function(){ document.getElementById("video-container").style.height = "1110px";});
 
 function postVideo() {
 	var xhttp = new XMLHttpRequest();

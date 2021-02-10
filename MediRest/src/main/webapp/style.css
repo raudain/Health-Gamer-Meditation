@@ -26,12 +26,21 @@ div {
 
 #links-holder {
     height: 2.3vh;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    color: white;
     background-color: rgb(13, 26, 40);
     top: 220px;
     right: 16px;
     position: absolute;
     justify-content: flex-end;
 }
+
+#links-holder div {
+	padding-top: 8px;
+}
+
 
 #links-holder a, #channel-container, span {
     align-items: center;
@@ -168,11 +177,11 @@ span {
 }
 
 @media screen and (max-width: 1500px) {
-	
+
 	#channel-header {
 		margin-left: 10%;
 	}
-	
+
 	#videos {
 		width: 90%;
 		margin-left: 5%;

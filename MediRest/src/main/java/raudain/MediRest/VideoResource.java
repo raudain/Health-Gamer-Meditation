@@ -38,7 +38,7 @@ public class VideoResource {
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Video createVideo(Video video) {
-		String sql = "INSERT INTO `mydb`.`videos` SET `static_thumbnail` = ?, `link` = ?, `caption` =?, `date` =?;";
+		String sql = "INSERT INTO `mydb`.`videos` SET `staticThumbnail` = ?, `link` = ?, `caption` =?, `date` =?;";
 		final Connection connection = createConnection();
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
