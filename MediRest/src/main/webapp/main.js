@@ -118,27 +118,29 @@ function postVideo() {
 
 function createVideo() {
     const xmlDoc = document.implementation.createDocument(null, "video");
-	const video = xmlDoc.getElementsByTagName("video")[0];
-	const form = document.getElementsByTagName("form")[0];
+	const xmlVideo = xmlDoc.getElementsByTagName("video")[0];
+	const form = document.querySelector('form');
+	const formData = new FormData(form);
+	const jsonVideo = Object.fromEntries(formData.entries());
 
 	const thumbnailElement = xmlDoc.createElement("staticThumbnail");
-	video.appendChild(thumbnailElement);
-	const thumbnailText = xmlDoc.createTextNode(form.elements[0].value);
+	xmlVideo.appendChild(thumbnailElement);
+	const thumbnailText = xmlDoc.createTextNode(jsonVideo.staticThumbnail);
 	thumbnailElement.appendChild(thumbnailText);
 
 	const linkElement = xmlDoc.createElement("link");
-	video.appendChild(linkElement);
-	const linkText = xmlDoc.createTextNode(form.elements[1].value);
+	xmlVideo.appendChild(linkElement);
+	const linkText = xmlDoc.createTextNode(jsonVideo.link);
 	linkElement.appendChild(linkText);
 
 	const captionElement = xmlDoc.createElement("caption");
-	video.appendChild(captionElement);
-	const captionText = xmlDoc.createTextNode(form.elements[2].value);
+	xmlVideo.appendChild(captionElement);
+	const captionText = xmlDoc.createTextNode(jsonVideo.caption);
 	captionElement.appendChild(captionText);
 
 	const dateElement = xmlDoc.createElement("date");
-	video.appendChild(dateElement);
-	const dateText = xmlDoc.createTextNode(form.elements[3].value);
+	xmlVideo.appendChild(dateElement);
+	const dateText = xmlDoc.createTextNode(jsonVideo.date);
 	dateElement.appendChild(dateText);
 
 	return xmlDoc;
